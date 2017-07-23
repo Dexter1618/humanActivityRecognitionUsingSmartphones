@@ -112,7 +112,7 @@ DATASET$subjectID<-as.factor(DATASET$subjectID)
 # in a file named "AVERAGES.csv"
 temp<-melt(DATASET,id=c("subjectID","activityPerformed"))
 temp<-dcast(temp,subjectID+activityPerformed ~ variable,fun.aggregate = mean)
-fwrite(temp,file = "./AVERAGES.txt")
+write.table(temp,file = "./AVERAGES.txt",row.names = FALSE)
 message("The averages for every activity for every subject are calculated and exported as a text file in the working directory, named 'AVERAGES.txt'")
 
 
