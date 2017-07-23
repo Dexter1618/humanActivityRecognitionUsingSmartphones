@@ -1,3 +1,21 @@
+if(!("data.table" %in% installed.packages()))
+# if the host doesn't have 'data.table' package installed, it will be installed
+{
+        message("'data.table' package is not installed. This script requires this package and so it will download it automatically")
+        message()
+        install.packages("data.table")
+}
+
+# 'data.table' package is required to run the commands in this script
+library("data.table")
+
+
+
+
+
+
+
+
 message(paste0("(Dowloading raw data at ",getwd()," [WORKING DIRECTORY])"))
 message()
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",destfile = "./DATASET.zip",quiet = TRUE)
@@ -87,7 +105,7 @@ DATASET$subjectID<-as.factor(DATASET$subjectID)
 
 
 
-# "reshape2::melt" and "reshape2::dcast" are used to create another data table
+# "melt" and "dcast" are used to create another data table
 # which contains average values of each variable recorded for every kind
 # of activity per subject.
 # The data table generated is exported and written to disk at the working directory
